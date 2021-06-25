@@ -2,7 +2,7 @@
 A project file with integrated PHP to show the dynamicity of the website.
 
 ### Projects Page with Login Authentication
-*index.html* > the login page which accepts user email id and password
+*index.html* > the main file
 
 *database*(folder) > To upload the recordsinto the database using php
 
