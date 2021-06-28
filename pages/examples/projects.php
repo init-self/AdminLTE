@@ -918,10 +918,12 @@ if($result = $conn -> query($query))
 							<?php 
 								if($rowResult == "success")
 								{
+									$i = 1;
 									while($row = $result -> fetch(PDO::FETCH_ASSOC))
 									{
 										echo "<tr>";
-											echo "<td>" . $row['Id'] . "</td>"; // Id
+											echo "<td>" . $i . "</td>"; // Id
+											$i++;
 											echo "<td>" . $row['Name'] . "</td>"; // Project Name
 											// Team Members
 											echo "<td>";	
