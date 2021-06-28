@@ -15,7 +15,7 @@ $(function()
         
         if(retype === formData.password)
         {
-            if((formData.name.length || formData.email.length) !== 0 && formData.password.length > 6)
+            if((formData.name.length || formData.email.length) != 0 && formData.password.length > 6)
             {
                 if(formData.check)
                 {

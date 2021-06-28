@@ -1,13 +1,6 @@
 var file_list = [];
 
 
-// To delete the file when user clicks on the delete option in files section
-function delete_file(id)
-{
-    let tr = document.querySelector('#row_list').querySelectorAll('tr[id="' + id + '"]');
-    console.log(tr);
-}
-
 
 $(function()
 {
@@ -31,7 +24,7 @@ $(function()
     $.post("../database/project-edit.php", {id: id, flag: "show"}, (data, status) =>
     {
         var data = JSON.parse(data);
-        console.log(data); // debugging purposes
+        // console.log(data); // debugging purposes
 
         // if records are found
         if(data.records)
@@ -62,7 +55,7 @@ $(function()
                 <td class="text-right py-0 align-middle">
                     <div class="btn-group btn-group-sm">
                         <a href="../uploads/${file_names[i]}" target="_blank" class="btn btn-info"><i class="fas fa-eye"></i></a>
-                        <button class="btn btn-danger" id="delete_file"><i class="fas fa-trash"></i></button>
+                        <a href="" class="btn btn-danger" onclick="file_delete(${id}, ${file_names[i]}, ${file_sizes['i']})" id="file_delete"><i class="fas fa-trash"></i></a>
                     </div>
                 </td>
                 </tr>`
@@ -132,5 +125,6 @@ $(function()
             }
         });
     });
+    
 });
 

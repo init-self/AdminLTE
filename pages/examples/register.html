@@ -13,7 +13,13 @@
 	<link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
 	<!-- Theme style -->
 	<link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+	<!-- Bootstrap 5 icons -->
+	<link rel="stylesheet" href="../../plugins/bootstrap5/icons/bootstrap-icons.css">
+
 </head>
+<style>
+	
+</style>
 <body class="hold-transition register-page">
 <div class="register-box">
 	<div class="register-logo">
@@ -25,35 +31,56 @@
 			<p class="login-box-msg">Register a new membership</p>
 
 			<form action="../../index.html" method="post">
-				<div class="input-group mb-3">
-					<input type="text" class="form-control" placeholder="Full name" id="name" name="name">
+				<!-- Full Name -->
+				<div class="input-group-append mb-3">
 					<div class="input-group-append">
 						<div class="input-group-text">
 							<span class="fas fa-user"></span>
 						</div>
+						<input type="text" class=" mx-2 form-control" placeholder="Full name" id="name" name="name">
+						<!-- Tooltip for Name -->
+						<div class="input-group-append">
+							<span class="bi bi-question-circle" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right" title="Name should contain a combination of <u>characters</u> and <u>spaces</u> only"></span>
+							
+						</div>
 					</div>
 				</div>
-				<div class="input-group mb-3">
-					<input type="email" class="form-control" placeholder="Email" id="email" name="email">
+				<!-- Email -->
+				<div class="input-group-append mb-3">
 					<div class="input-group-append">
 						<div class="input-group-text">
 							<span class="fas fa-envelope"></span>
 						</div>
+						<input type="email" class="mx-2 form-control" placeholder="Email" id="email" name="email">
+						<!-- Tooltip for Email -->
+						<div class="input-group-append">
+							<span class="bi bi-question-circle"data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="right" title="A valid email is one with proper <u>subdomain</u> and <u>domain</u> name after <em>@</em> and proper combination of <u>letters</u> and <u>numbers</u> before <em>@</em>"></span>
+						</div>
 					</div>
 				</div>
-				<div class="input-group mb-3">
-					<input type="password" class="form-control" placeholder="Password" id="password" name="password">
+				<!-- Password -->
+				<div class="input-group-append mb-3">
 					<div class="input-group-append">
 						<div class="input-group-text">
 							<span class="fas fa-lock"></span>
 						</div>
+						<input type="password" class="mx-2 form-control" placeholder="Password" id="password" name="password">
+						<!-- Tooltip for Password -->
+						<div class="input-group-append">
+							<span class="bi bi-question-circle" data-bs-html="true" data-bs-toggle="tooltip" data-bs-placement="right" title="Password should be <u>atleast</u> <br> <em>6 characters long</em> and should contain a combination of <u>letters</u>, <u>numbers</u> and <u>symbols</u>[@, $, _]"></span>
+						</div>
 					</div>
 				</div>
-				<div class="input-group mb-3">
-					<input type="password" class="form-control" placeholder="Retype password" id="re-password" name="re-password">
+				<!-- Password Re-type -->
+				<div class="input-group-append mb-3">
 					<div class="input-group-append">
 						<div class="input-group-text">
 							<span class="fas fa-lock"></span>
+						</div>
+						<input type="password" class="mx-2 form-control" placeholder="Retype password" id="re-password" name="re-password">
+						<!-- Tooltip for Password -->
+						<div class="input-group-append">
+							<span class="bi bi-question-circle" data-bs-html="true" data-bs-toggle="tooltip" data-bs-placement="right" title="The password should match above"></span>
 						</div>
 					</div>
 				</div>
@@ -104,8 +131,28 @@
 <script src="../../plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="../../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap 5 -->
+<script src="../../plugins/bootstrap5/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../../dist/js/adminlte.min.js"></script>
 <script src="register.js"></script>
+<script>
+	var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+	var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) 
+	{
+		return new bootstrap.Tooltip(tooltipTriggerEl)
+	})
+
+	$(function()
+	{
+		$('div.hints').hover(function()
+		{
+			$('span#hint').attr('class', 'bi bi-question')
+		}, function()
+		{
+			$('span#hint').attr('class', 'bi bi-question-circle')
+		})
+	})
+</script>
 </body>
 </html>
