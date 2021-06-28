@@ -30,6 +30,10 @@ $(function()
                 {
                     $('#errorBox').css('display', 'block');
                     $('#errorBox .text-danger').text(data.errors);
+                    window.setTimeout(function()
+                    {
+                        $('#errorBox').css('display', 'none');
+                    }, 1000);
                 }
             })
         }else
