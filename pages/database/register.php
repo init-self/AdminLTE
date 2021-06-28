@@ -60,13 +60,10 @@ if(isset($_data['name']) && isset($_data['email']) && isset($_data['password']))
             header("location: ./404.html");
         }
         $conn = null;
-    }else
-    {
-        $data['errors'] = "Invalid Details!";
     }
 }else
 {
-    $data['errors'] = "Invalid Details!";
+    $data['errors'] = "Oops! Looks like we have some error on our side. Try again after some time. ";
 }
 
 echo json_encode($data);
