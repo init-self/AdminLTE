@@ -1030,6 +1030,23 @@
 	{
 		let name = (localStorage.getItem('username')) ? localStorage.getItem('username') : sessionStorage.getItem('username');
 		$('.info .d-block').text(name);	
+
+		// a function to delete the file
+		function file_delete(id, file_name, file_size)
+		{
+			let table_row = $('#row_list #file_delete');
+			let formData = {
+				id:id,
+				file: file_name,
+				size: file_size,
+				flag: "file_deletion"
+			}
+			$.post("./file-edit.php", formData, (data,status) =>
+			{
+				var data = JSON.parse(data);
+				console.log(data);
+			})
+		}
 	})
 </script>
 </body>
