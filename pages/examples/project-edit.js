@@ -42,9 +42,9 @@ $(function()
             // set anchor add file tag attribute to file_upload page
             $('a[id="anchorAddFile"]').attr('href', `../database/file_upload.php?id=${id}`)
 
-            // extract file names and sizes from the data object into arrays - to set file's data in table format
-            let file_names = data.projects.Files.split(",");
-            let file_sizes = data.projects.FileSize.split(",");
+            // extract file names and sizes from the data object - to set file's data in table format
+            let file_names = data.files; // array of file names
+            let file_sizes = data.size; // array of file sizes
 
             // set files with their data
             for(let i = 0; i < file_names.length; i++)
