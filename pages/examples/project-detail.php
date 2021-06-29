@@ -1055,7 +1055,7 @@ if(isset($_GET['id']) && !empty(trim($_GET['id'])))
 							<ul class="list-unstyled">
 								<li>
 									<?php
-									$arr = explode(",", $row['Files']);
+									$arr = unserialize($row['Files']);
 									$i = 0;
 									if(count($arr) > 1)
 									{
