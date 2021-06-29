@@ -48,6 +48,12 @@ if(isset($_REQUEST['flag']) && $_REQUEST['flag'] === "show")
 				$row_budget = $stmt_budget -> fetch(PDO::FETCH_ASSOC);
 
                 $data['projects'] = $row;
+
+				if($row['Files'] !== "")
+				{
+					$data['files'] = unserialize($row['Files']);
+					$data['size'] = unserialize($row['FileSize']);
+				}
                 $data['budgets'] = $row_budget;
 				$data['records'] = true;
 			}else
