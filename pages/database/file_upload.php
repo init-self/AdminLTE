@@ -5,8 +5,8 @@ ob_start();
 require_once("./config.php");
 
 $data = array();
-$file_names = "";
-$file_sizes = "";
+$filename = [];
+$filesize = [];
 
 if(isset($_POST['submit']))
 {
@@ -16,14 +16,14 @@ if(isset($_POST['submit']))
     // Looping through all files to upload
     for($i = 0; $i < $_fileCount; $i++)
     {
-        $filename = $_FILES['inputFile']['name'][$i]; // get file name
-        $filesize = $_FILES['inputFile']['size'][$i]; // get file size
+        array_push($filename, $_FILES['inputFile']['name'][$i]); // push file name to make an array
+        array_push($filesize, $_FILES['inputFile']['size'][$i]); // push file size to make an array
 
         $filedir = "../uploads/" . $filename; // upload directory
 
         // Strings of file_names and file_sizes to update in database
-        $file_names .= $filename . ",";
-        $file_sizes .= $filesize . ",";
+        // $file_names .= $filename . ", ";
+        // $file_sizes .= $filesize . ", ";
 
         // Upload file
         if(move_uploaded_file($_FILES['inputFile']['tmp_name'][$i], $filedir))
@@ -41,7 +41,10 @@ if(isset($_POST['submit']))
         $query = "UPDATE projects SET Files = :files, FileSize = :fileSize WHERE Id = :id;";
         if($stmt = $conn -> prepare($query))
         {
-            if($stmt -> execute(array(":files" => $file_names, ":fileSize" => $file_sizes ,":id" => $id)))
+            // converting into serialize array
+            $filename = serialize($filename);
+            $filesize = serialize($filesize);
+            if($stmt -> execute(array(":files" => $filename, ":fileSize" => $filesize ,":id" => $id)))
             {
                 $data['upload'] = $flag = true;
             }else
