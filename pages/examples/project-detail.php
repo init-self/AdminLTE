@@ -1062,7 +1062,7 @@ if(isset($_GET['id']) && !empty(trim($_GET['id'])))
 										{
 											while($i < count($arr))
 											{
-												echo " > <a href=\"../uploads/" . $arr[$i] . "\">" . $arr[$i] . "</a> <br>";
+												echo " > <a href=\"../uploads/" . $arr[$i] . "\" target=\"_blank\">" . $arr[$i] . "</a> <br>";
 												$i++;
 											}
 										}else
