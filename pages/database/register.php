@@ -8,7 +8,7 @@ $_data = array("name" => $_REQUEST['name'], "email" => $_REQUEST['email'], "pass
 $data = array();
 
 
-
+// validate the credentials
 function validate($data)
 {
     if(empty($data['name']) && empty($data['email']) && empty($data['password']) && empty($data['check']))
@@ -38,20 +38,31 @@ function validate($data)
     return true;
 }
 
+
+/**
+ * check if fields are filled
+ * make the query to save the credentials
+ * update the values
+ * success
+ */
+
+// check the fields
 if(isset($_data['name']) && isset($_data['email']) && isset($_data['password']))
 {
-    if(validate($_data))
+    if(validate($_data)) // validation
     {
+        // the query to save data
         $query = "INSERT INTO signup (Name, Username, Password) VALUES (:name, :email, :password);";
 
         if($stmt = $conn -> prepare($query))
         {
             if($stmt -> execute(array(':name' => $_data['name'], ':email' => md5($_data['email']), ':password' => md5($_data['password']))))
             {
-                $data['success'] = true;
+                $data['success'] = true; // Voila! Happy face ☺
             }else
             {
-                $data['errors'] = "Could not save records. Please try again!";
+                // Ufff! Errors and Bugs...
+                $data['errors'] = "Could not save records. Please try again!"; 
             }
             unset($stmt);
         }else
@@ -63,7 +74,8 @@ if(isset($_data['name']) && isset($_data['email']) && isset($_data['password']))
     }
 }else
 {
-    $data['errors'] = "Oops! Looks like we have some error on our side. Try again after some time. ";
+    // Backend error
+    $data['errors'] = "Oops! Looks like we have some problem on our end. We will try to resolve soon. ";
 }
 
 echo json_encode($data);
