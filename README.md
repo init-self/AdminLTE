@@ -1,5 +1,6 @@
-# Admin LTE
-A project file with integrated PHP to show the dynamicity of the website.
+`An Internship project build in core PHP to learn the basics of the language and to evaluate our performances`
+
+# <strong style='text-align: center; font-size: 15px;'> Admin LTE </strong>
 
 ### Projects Page with Login Authentication
 *index.html* > the main file
